@@ -69,7 +69,7 @@ function updateLatLng() {
         console.log($('#id_lat').val());
         console.log($('#id_lng').val());
         var latlng = $('#id_lat').val() + ',' + $('#id_lng').val();
-        $('#geocode').val(latlng);
+        $('#acf-field_56a9bdc902bd3').val(latlng);
     })(jQuery);
 }
 
@@ -102,7 +102,7 @@ function updateLatLng() {
 
             $('#acf-field_56a9bdc902bd3').attr('readonly', true);
             $('.acf-field-56a9bdc902bd3').parent().attr('id', 'geocode_parent'); // 地図と連動させるためにgeocode_parentで包む
-            $('.acf-field-56a9bdc902bd3').hide();
+            //$('.acf-field-56a9bdc902bd3').hide();
 
             // 地図描画用のdivを置いておく
             $('<div class="acf-field"></div>').append(
@@ -111,7 +111,10 @@ function updateLatLng() {
                     '</div>')
                 ,$('<div></div>').attr('id', 'map_canvas').css({'width':'100%', 'min-height': '200px'})
                 ,$('<div><a href="/registerhelp" target="_blank">地図の登録方法について</a></div>').css({'float': 'right'})
+                ,$('<input type="hidden" id="id_lat" />')
+                ,$('<input type="hidden" id="id_lng" />')
             ).insertAfter('.acf-field-56a9bdbf02bd2');
+
 
             // 緯度経度情報の実際の値は見せない
 
