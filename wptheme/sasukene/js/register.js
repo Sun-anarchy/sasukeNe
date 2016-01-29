@@ -77,30 +77,45 @@ function updateLatLng() {
 // 初期設定
 (function($){
     $(document).ready(function(){
-        (function() { // ユーザ名、メールアドレスをかくしてメールアドレスを自動で埋める
-            (function() {
-                $('label[for=username]').hide(); // ユーザー名のラベル
-                $('#log').hide(); // ユーザー名のinput なぜlog...?
-
-                $('label[for=user_email]').hide(); // ユーザー名のラベル
-                $('#user_email').hide(); // ユーザー名のinput なぜlog...?
-
-                $('#phone1').on('change', function (ele) { // phone1はユーザ名に利用
-                    var phone = this.value;
-                    var email = this.value + '@sasukene.info';
-                    $('#log').val(phone);
-                    $('#user_email').val(email); // ユーザー名のinput なぜlog...?
-                });
-            })();
-        })();
+        //(function() { // ユーザ名、メールアドレスをかくしてメールアドレスを自動で埋める
+        //    (function() {
+        //        $('label[for=username]').hide(); // ユーザー名のラベル
+        //        //$('#log').hide(); // ユーザー名のinput なぜlog...?
+        //
+        //        $('label[for=user_email]').hide(); // ユーザー名のラベル
+        //        $('#user_email').hide(); // ユーザー名のinput なぜlog...?
+        //
+        //        $('#phone1').on('change', function (ele) { // phone1はユーザ名に利用
+        //            var phone = this.value;
+        //            var email = this.value + '@sasukene.info';
+        //            $('#log').val(phone);
+        //            $('#user_email').val(email); // ユーザー名のinput なぜlog...?
+        //        });
+        //    })();
+        //})();
 
 
 
         (function() { // 地図の初期化関連
-            $('#geocode').attr('readonly', true);
-            $('#geocode').parent().attr('id', 'geocode_parent'); // 地図と連動させるためにgeocode_parentで包む
-            $('#geocode').hide();
-            jQuery('#map_canvas').appendTo('#geocode_parent');
+            $('p.register').html('さすけねに登録');
+
+
+            $('#acf-field_56a9bdc902bd3').attr('readonly', true);
+            $('.acf-field-56a9bdc902bd3').parent().attr('id', 'geocode_parent'); // 地図と連動させるためにgeocode_parentで包む
+            $('.acf-field-56a9bdc902bd3').hide();
+
+            // 地図描画用のdivを置いておく
+            $('<div class="acf-field"></div>').append(
+                $('<div class="acf-label"><label>地図</label>' +
+                    '電話番号に紐付ける地図上の点を選択してください。' +
+                    '</div>')
+                ,$('<div></div>').attr('id', 'map_canvas').css({'width':'100%', 'min-height': '200px'})
+                ,$('<div><a href="/registerhelp" target="_blank">地図の登録方法について</a></div>').css({'float': 'right'})
+            ).insertAfter('.acf-field-56a9bdbf02bd2');
+
+            // 緯度経度情報の実際の値は見せない
+
+            //$('div.acf-field_56a9bdc902bd3').hide();
             initialize();
         })();
 
